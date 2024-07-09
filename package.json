@@ -1,6 +1,12 @@
 {
+  "name": "simpleton-proxy",
+  "version": "0.0.2",
+  "description": "A proxy exposing and caching web and file resources over a convenient protocol",
+  "author": "Braid Working Group",
+  "repository": "braid-org/simpleton-proxy",
+  "homepage": "https://braid.org",
   "dependencies": {
     "braid-http": "^0.3.20",
-    "braid-text": "^0.0.16"
+    "braid-text": "^0.0.19"
   }
 }

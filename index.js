@@ -1,6 +1,4 @@
 
-var client_key = 'g1yz3hdre68954etpulsglsygyk6gmz'
-
 const http = require('http');
 const https = require('https');
 const url = require('url');
@@ -14,6 +12,8 @@ var braid_fetch = require('braid-http').fetch
 var known_urls = {}
 
 const port = process.argv[2] || 10000;
+const cookie = process.argv[3] || null;
+console.log(`cookie = ${cookie}`)
 
 process.on("unhandledRejection", (x) => console.log(`unhandledRejection: ${x.stack}`))
 process.on("uncaughtException", (x) => console.log(`uncaughtException: ${x.stack}`))
@@ -163,7 +163,7 @@ const server = http.createServer(async (req, res) => {
                     headers: {
                         "Merge-Type": "dt",
                         "Content-Type": 'text/plain',
-                        "Cookie": 'client=g1yz3hdre68954etpulsglsygyk6gmz'
+                        ...(cookie ? { "Cookie": cookie } : {}),
                     },
                     method: "PUT",
                     retry: true,
@@ -421,7 +421,7 @@ function simpleton_client(url, { apply_remote_update, generate_local_diff_update
                 await braid_fetch_wrapper(url, {
                     headers: {
                         "Merge-Type": "simpleton",
-                        "Cookie": 'client=' + client_key,
+                        ...(cookie ? { "Cookie": cookie } : {}),
                         ...(content_type ? { "Content-Type": content_type } : {})
                     },
                     method: "PUT",
