@@ -1,3 +1,5 @@
+# NOTE: This project has moved to [braid-text-proxy](https://github.com/braid-org/braid-text-proxy)
+
 # simpleton-proxy
 a proxy exposing and caching web and file resources over a convenient protocol
 
